@@ -21,7 +21,7 @@ math: mathjax
 - 天秤にボールを $1$ つずつのせて重さを比べることができる
 - $8$ 回以内の比較でボールを軽い順に並べる
 
-![center](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsNCqznlQdJa-MJryzDx7rHIr-4X1_1CmzYagy9XU1RjZZeBCjw2_Hs7sMM2RwLxMEq0xGND3eWwB3kCgdnrsRDNZIaVbI8RgFXoi4QACh_nrDtoZaL4R6-hnapeWb3_xO_vr71RGq0g/s400/tenbin.png)
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsNCqznlQdJa-MJryzDx7rHIr-4X1_1CmzYagy9XU1RjZZeBCjw2_Hs7sMM2RwLxMEq0xGND3eWwB3kCgdnrsRDNZIaVbI8RgFXoi4QACh_nrDtoZaL4R6-hnapeWb3_xO_vr71RGq0g/s400/tenbin.png)
 
 ---
 # 二分挿入ソート (Binary insertion sort)

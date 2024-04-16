@@ -131,6 +131,14 @@ print(sympy.isprime(N))
 ```
 
 ---
+# パズル
+- $5$ 個のボールがあり、重さはすべて異なる
+- 天秤にボールを $1$ つずつのせて重さを比べることができる
+- $8$ 回以内の比較でボールを軽い順に並べる
+
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsNCqznlQdJa-MJryzDx7rHIr-4X1_1CmzYagy9XU1RjZZeBCjw2_Hs7sMM2RwLxMEq0xGND3eWwB3kCgdnrsRDNZIaVbI8RgFXoi4QACh_nrDtoZaL4R6-hnapeWb3_xO_vr71RGq0g/s400/tenbin.png)
+
+---
 # MojaCoder
 簡単なやつ
 https://mojacoder.app/users/kusirakusira/problems/25GBC_A
