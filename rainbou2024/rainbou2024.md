@@ -145,10 +145,11 @@ print(sympy.isprime(N))
 ---
 # どうやって始めるの？（無料）
 - プログラミング言語の勉強をする
-    - AtCoder Programming Guide for beginners (C++ / Python3)
     - ほどほどでよい（ネットにある無料のやつを適当にやれば十分。やりながら勉強すればよい）
+    - AtCoder Programming Guide for beginners (C++ / Python3)
 - とりあえず AtCoder でアカウントを作り、過去問を解いてみる
     - id は一度しか変更できない、同時に複数のアカウントを持つことは規約違反であることに注意
+    - [AtCoder NoviSteps](https://atcoder-novisteps.vercel.app/) 問題を難易度別に並べられたサイト
 - AtCoder Beginner Contest に出る
 - アルゴリズムの勉強をする
     - Aizu Online Judge のコースを進める
@@ -162,6 +163,7 @@ print(sympy.isprime(N))
     - アルゴリズム実技検定　公式テキスト［エントリー～中級編］
     - JOI 公式テキスト Pythonで問題解決
 - paizaラーニング（RAIBOUに入ると無料！）
+    - プログラミング言語を動画で学べる
 
 ---
 # 【宣伝】RAINBOUに⼊部しませんか？
