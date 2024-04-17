@@ -4,13 +4,17 @@ style: |
     section {
         justify-content: normal;
     }
-    section.lead {
+    section.title {
         justify-content: center;
         text-align: center;
     }
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
 math: mathjax
 ---
-<!-- _class: lead -->
+<!-- _class: title -->
 # 競技プログラミングってなあに
 
 阪大競技プログラミング部RAIBOU
@@ -23,7 +27,7 @@ math: mathjax
 - AtCoder 青
 - 言語: Python3 / C++
 
-![bg right:40% 80%](icon.png)
+![bg right:40% 80%](img/icon.png)
 
 ---
 # 競技プログラミングって？
@@ -131,12 +135,19 @@ print(sympy.isprime(N))
 ```
 
 ---
+# どうやって勉強するの？
+
+---
+<!-- _class: title -->
+# 演習
+
+---
 # パズル
 - $5$ 個のボールがあり、重さはすべて異なる
 - 天秤にボールを $1$ つずつのせて重さを比べることができる
 - $8$ 回以内の比較でボールを軽い順に並べる
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsNCqznlQdJa-MJryzDx7rHIr-4X1_1CmzYagy9XU1RjZZeBCjw2_Hs7sMM2RwLxMEq0xGND3eWwB3kCgdnrsRDNZIaVbI8RgFXoi4QACh_nrDtoZaL4R6-hnapeWb3_xO_vr71RGq0g/s400/tenbin.png)
+![center](img/sort-1.svg) ![center](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsNCqznlQdJa-MJryzDx7rHIr-4X1_1CmzYagy9XU1RjZZeBCjw2_Hs7sMM2RwLxMEq0xGND3eWwB3kCgdnrsRDNZIaVbI8RgFXoi4QACh_nrDtoZaL4R6-hnapeWb3_xO_vr71RGq0g/s400/tenbin.png)
 
 ---
 # MojaCoder
