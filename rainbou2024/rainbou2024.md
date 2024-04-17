@@ -135,19 +135,55 @@ print(sympy.isprime(N))
 ```
 
 ---
-# どうやって勉強するの？
-
----
-<!-- _class: title -->
-# 演習
-
----
 # パズル
 - $5$ 個のボールがあり、重さはすべて異なる
 - 天秤にボールを $1$ つずつのせて重さを比べることができる
 - $8$ 回以内の比較でボールを軽い順に並べる
 
 ![center](img/sort-1.svg) ![center](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsNCqznlQdJa-MJryzDx7rHIr-4X1_1CmzYagy9XU1RjZZeBCjw2_Hs7sMM2RwLxMEq0xGND3eWwB3kCgdnrsRDNZIaVbI8RgFXoi4QACh_nrDtoZaL4R6-hnapeWb3_xO_vr71RGq0g/s400/tenbin.png)
+
+---
+# どうやって始めるの？（無料）
+- プログラミング言語の勉強をする
+    - AtCoder Programming Guide for beginners (C++ / Python3)
+    - ほどほどでよい（ネットにある無料のやつを適当にやれば十分。やりながら勉強すればよい）
+- とりあえず AtCoder でアカウントを作り、過去問を解いてみる
+    - id は一度しか変更できない、同時に複数のアカウントを持つことは規約違反であることに注意
+- AtCoder Beginner Contest に出る
+- アルゴリズムの勉強をする
+    - Aizu Online Judge のコースを進める
+
+---
+# どうやって始めるの？（有料）
+- 本を読む
+    - [関連書籍 - AtCoderInfo](https://info.atcoder.jp/more/contents/official-book)
+    - 競技プログラミングの鉄則 ~アルゴリズム力と思考力を高める77の技術~
+    - アルゴリズム的思考力が身につく! プログラミングコンテストAtCoder入門
+    - アルゴリズム実技検定　公式テキスト［エントリー～中級編］
+    - JOI 公式テキスト Pythonで問題解決
+- paizaラーニング（RAIBOUに入ると無料！）
+
+---
+# 【宣伝】RAINBOUに⼊部しませんか？
+- OUCC との兼部ももちろん OK
+- 主な活動
+    - ABC 後の感想戦
+    - ICPC（国際⼤学対抗プログラミングコンテスト）の参加
+    - OUPC（⼤阪⼤学プログラミングコンテスト）の開催
+    - 合宿など
+- 部費は $0$ 円！
+
+---
+<!-- _class: title -->
+# 演習
+
+---
+# ビーバーチャレンジ
+- URL: https://bebras.eplang.jp/
+- 情報科学の問題を、知識を必要としないパズルにしたもの
+- イラストを多く含み、選択形式
+
+![center](https://bebras.eplang.jp/swfu/d/bebras_cover.png)
 
 ---
 # MojaCoder
