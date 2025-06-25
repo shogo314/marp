@@ -6,16 +6,42 @@ style: |
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        font-size: 2em;
+        font-size: 1.8em;
     }
     section.title {
         justify-content: center;
         text-align: center;
         align-items: center;
     }
+    .small {
+        font-size: 1.0em;
+    }
     section::after {
         content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
-        font-size: 1.2em;
+        font-size: 1.0em;
+    }
+    :root {
+        --fw: 1;
+    }
+    .flex{
+        display: flex;
+        gap: 1em;
+    }
+    .sa {
+        justify-content: space-around;
+    }
+    .sb {
+        justify-content: space-between;
+    }
+    .sa div,.sb div{
+        margin: 0.1em;
+    }
+    .fw div{
+        flex: var(--fw);
+    }
+    .center-cols {
+        justify-content: center;
+        width: 100%;
     }
 math: katex
 ---
@@ -61,9 +87,20 @@ math: katex
 ---
 # SS-TOKEN-RING
 プロセス $P_i$ の局所状態を $s_i \in \{0,1,\dots,K-1\}$ とする ($K$ は $n$ 以上の任意の自然数)
-| プロセス $P_0$ 上のアルゴリズム | プロセス $P(\ne P_0)$ 上のアルゴリズム |
-| --- | --- |
-| $s_{n-1}=s_0$ なら<br>$s_0 \gets (s_0+1) \mod K$ | $s_{i-1}\ne s_i$ なら<br>$s_i \gets s_{i-1}$ |
+<div class="flex fw center-cols">
+<div class="small" style="--fw: 1;">
+
+### プロセス $P_0$ 上
+1. $s_{n-1}=s_0$ なら
+    - $s_0 \gets (s_0+1) \mod K$
+</div>
+<div class="small" style="--fw: 1;">
+
+### プロセス $P(\ne P_0)$ 上
+1. $s_{i-1}\ne s_i$ なら
+    - $s_i \gets s_{i-1}$
+</div>
+</div>
 
 ---
 # SS-TOKEN-RING
@@ -104,9 +141,20 @@ $(2,1,0) \to (2,1,1)$
 ---
 # FLOOD1
 並列幅優先探索
-| プロセス $P_0$ 上のアルゴリズム | プロセス $P(\ne P_0)$ 上のアルゴリズム |
-| --- | --- |
-| 隣接プロセスにメッセージ $m$ を放送する | `if` $m$ を初めて受信した `then`<br>隣接プロセスにメッセージ $m$ を放送する |
+
+<div class="flex fw center-cols">
+<div class="small" style="--fw: 1;">
+
+### プロセス $P_0$ 上
+1. 隣接プロセスにメッセージ $m$ を放送する
+</div>
+<div class="small" style="--fw: 1;">
+
+### プロセス $P(\ne P_0)$ 上
+1. $m$ を初めて受信した
+    - 隣接プロセスにメッセージ $m$ を放送する
+</div>
+</div>
 
 ---
 # FLOOD1のシミュレーション
@@ -129,9 +177,20 @@ $(2,1,0) \to (2,1,1)$
 
 ---
 # FLOOD2
-| プロセス $P_0$ 上のアルゴリズム | プロセス $P(\ne P_0)$ 上のアルゴリズム |
-| --- | --- |
-| 時刻 $n-1$ まで<br>隣接プロセスにメッセージ $m$ を放送する | `if` $m$ を受信した `then`<br>時刻 $n-1$ まで<br>隣接プロセスにメッセージ $m$ を放送する |
+
+<div class="flex fw center-cols">
+<div class="small" style="--fw: 1;">
+
+### プロセス $P_0$ 上
+1. 時刻 $n-1$ まで隣接プロセスにメッセージ $m$ を放送する
+</div>
+<div class="small" style="--fw: 1;">
+
+### プロセス $P(\ne P_0)$ 上
+1. $m$ を受信した
+    - 時刻 $n-1$ まで隣接プロセスにメッセージ $m$ を放送する
+</div>
+</div>
 
 ---
 # FLOOD2
@@ -160,9 +219,24 @@ $|U_{t-1}|<n$ の場合、$V\setminus U_{t-1}$ に含まれる任意のプロセ
 
 ---
 # RAND-SEARCH
-| プロセス $P_0$ 上のアルゴリズム | プロセス $P(\ne P_0)$ 上のアルゴリズム |
-| --- | --- |
-| 隣接プロセスの一つを等確率で選択し、そこに $m$ を送信する<br>`repeat`<br>`if` $m$ を受信した `then`<br>隣接プロセスの一つを等確率で選択し、そこに $m$ を送信する<br>`until` forever | `repeat`<br>`if` $m$ を受信した `then`<br>隣接プロセスの一つを等確率で選択し、そこに $m$ を送信する<br>`until` forever |
+
+<div class="flex fw center-cols">
+<div class="small" style="--fw: 1;">
+
+### プロセス $P_0$ 上
+1. 隣接プロセスの一つを等確率で選択し、そこに $m$ を送信する
+1. 繰り返す
+    - $m$ を受信した
+        - 隣接プロセスの一つを等確率で選択し、そこに $m$ を送信する
+</div>
+<div class="small" style="--fw: 1;">
+
+### プロセス $P(\ne P_0)$ 上
+1. 繰り返す
+    - $m$ を受信した
+        - 隣接プロセスの一つを等確率で選択し、そこに $m$ を送信する
+</div>
+</div>
 
 ---
 # RAND-SEARCH
@@ -207,9 +281,9 @@ $|U_{t-1}|<n$ の場合、$V\setminus U_{t-1}$ に含まれる任意のプロセ
 ---
 # クイックソート
 - 配列をピボットより大きいか小さいかで分割し前後にわけ、分割したものに対して再帰的にこれを適用する
-- すべての入力が同じ確率で出現するなら、平均時間複雑度は $O(\log n)$
+- すべての入力が同じ確率で出現するなら、平均時間複雑度は $O(n \log n)$
 - 入力によっては、平均時間複雑度は $\Omega (n^2)$
 
 # 乱択クイックソート
 - ピボットをランダムに選ぶ
-- 入力によらず、平均時間複雑度が $O(\log n)$
+- 入力によらず、平均時間複雑度が $O(n \log n)$
