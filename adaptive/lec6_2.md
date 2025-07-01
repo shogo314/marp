@@ -108,6 +108,18 @@ math: katex
 - $R$ は初期値としてある値 $v_0 (0\le v_0 \le k-1)$ を持ち、$R_{v_0} = 1, R_i = 0 (i \ne v_0)$ が成り立つ
 
 ---
+# 単純な読出し方法で失敗する例
+### 書込み
+- $R_v$ に $1$ を書込み、$R_i (0\le i \le v-1)$ にインデックスの降順で $0$ を書き込む
+
+### 読出し
+- $R_0$ からインデックスの昇順に読み出し、最初に $1$ を読み出したレジスタのインデックスを $R$ から読み出した値とする
+
+---
+# 単純な読出し方法で失敗する例
+<img src="img/lec6_2/11.svg" height="500"/>
+
+---
 # SRSW-M
 <div class="flex fw center-cols">
 <div class="small" style="--fw: 1;">
@@ -136,6 +148,103 @@ math: katex
 </div>
 
 ---
+# SRSW-M
+SRSW-M は $k$ 個の SRSW の $2$ 値レジスタを用いて、SRSW の $k$ 値レジスタを実現する無待機アルゴリズムである
+
+### 証明
+無待機性を示す
+2 の `while` が終了する、つまりレジスタ $R_i$ から値 $1$ を読み出すことを示す
+
+初期状態では $R_{v_0} = 1$ が成り立つ。
+$2$ 値レジスタ $R_i$ に値 $0$ を書き込むとき、その前に $R_v (v>i)$ に値 $1$ を書き込んでいる。このことから $P_r$ がレジスタ $R_i$ を読み出すときにはあるレジスタ $R_j (j \le i)$ が値 $1$ を保持していることを示せる
+
+---
 # SRSW レジスタから MRSW レジスタの構成
 
 - SRSW の多値レジスタを用いて、MRSWの多値レジスタを構成する
+- レジスタ $R$ に対して ${READ}$ 命令を実行できる $n$ 個のプロセスを $P_r (1\le r\le n)$、<br>${READ}$ 命令を実行できる単一のプロセスを $Q_w$ と表す
+- MRSW レジスタ $R$ を実現するために $n^2 + n$ 個の SRSW レジスタを使用
+---
+- ${Val}_r$：プロセス $Q_w$ が共有レジスタ $R$ に書き込んだ値を各プロセス $P_r$ に伝えるためのレジスタ
+- ${Report}_{i,j}$：プロセス $P_i$ がレジスタ $R$ から読み出した値を他のプロセス $P_j$ に伝えるためのレジスタ
+- ${Val}_r$ および ${Report}_{i,j}$ には、レジスタ $R$ に格納する値とプロセス $Q_w$ が $R$ にその値を書き込んだときの時刻印の組を格納する
+- 全ての SRSW レジスタの初期値は、$R$ の初期値 $v_0$ と時刻印の初期値 $0$ の組 $(v_0, 0)$
+
+---
+# 単純な読出し方法で失敗する例
+### 書込み
+- ${Val}_i (0\le i \le n-1)$ にインデックスの昇順で書き込む
+
+### $P_i$ による読出し
+- ${Val}_i$ から読み出す
+
+---
+# 単純な読出し方法で失敗する例
+<img src="img/lec6_2/21.svg" height="500"/>
+
+---
+# MRSW-M
+
+<div class="flex fw center-cols">
+<div class="small" style="--fw: 1;">
+
+### $P_r$ の読出し動作
+
+1. $(v[0],ts[0]) \gets {Val}_r$
+1. `for` $i \gets 1$ `to` $n$ `do`
+    - $(v[i],ts[i]) \gets {Report}_{i,r}$
+1. $j = \mathrm{maxarg}_{0 \le i \le n} ts[i]$
+1. `for` $i \gets 1$ `to` $n$ `do`
+    - ${Report}_{r,i} \gets (v[j],ts[j])$
+1. `return` $v[j]$
+
+</div>
+<div class="small" style="--fw: 1;">
+
+### 値 $v$ の書込み動作
+
+1. $ts \gets ts + 1$
+1. `for` $i \gets 1$ `to` $n$ `do`
+    - ${Val}_i \gets (v,ts)$
+1. `return` $(OK)$
+
+</div>
+</div>
+
+---
+# MRSW レジスタから MRMW レジスタの構成
+
+- MRSW の多値レジスタを用いて、MRMWの多値レジスタを構成する
+- 構成する $n$R$m$W レジスタ $R$ に対して ${Read}$ 命令を実行できる $n$ 個のプロセスを $P_r$ とし、${Write}$ 命令を実行できる $m$ 個のプロセスを $Q_w$ とする
+- $m$ 個の $(n+m)$R$1$W レジスタ $R_i (1 \le i \le m)$ を使用する
+- 共有レジスタ $R_i$ に対しては、プロセス $Q_i$ が ${write}$ 命令を実行でき、各プロセス $P_r (1 \le r \le n)$ および $Q_w (1 \le w \le m)$ が ${read}$ 命令を実行できる
+- レジスタ $R_i$ が格納される値は、レジスタ $R$ が格納するデータと、プロセス $Q_i$ が $R_i$ にそのデータを書き込んだときの時刻印
+- 全ての MRSW レジスタ の初期値は、レジスタ $R$ の初期値 $v_0$ と時刻印の初期値 $0$ の組 $(v_0,0)$
+
+---
+# MRMW-M
+
+<div class="flex fw center-cols">
+<div class="small" style="--fw: 1;">
+
+### $P_r$ による読出し動作
+
+1. `for` $i \gets 1$ `to` $m$ `do`
+    - $(v[i],ts[i]) \gets R_i$
+1. $j \gets \mathrm{maxarg}_{1\le i \le m} ts[i]$
+    - $ts[i]$ が同じ場合は最小の $i$
+1. `return` $v[j]$
+
+</div>
+<div class="small" style="--fw: 1;">
+
+### $Q_w$ による値 $v$ の書込み動作
+
+1. `for` $i \gets 1$ `to` $m$ `do`
+    - $ts[i] \gets {R_i}.{ts}$
+1. $ts \gets \max\{ts[i] | 1\le i\le m\}+1$
+1. $R_w \gets (v,ts)$
+1. `return` $(OK)$
+
+</div>
+</div>
