@@ -274,7 +274,7 @@ $Q$ は FIFO キューで初期値は $\{1,0\}$
 
 ---
 # ComPare & Swap
-$CompSwap(CS,old_v,new_v)$：$CS$ が格納する値を読み出し、$CS=old\_v$ なら $CS$ を $new\_v$ にする。
+$CompSwap(CS,old\_v,new\_v)$：$CS$ が格納する値を読み出し、$CS=old\_v$ なら $CS$ を $new\_v$ にする。
 
 1. $x \gets CompSwap(CS,-1,dP_i)$
 1. `if` $x=-1$ `then`
